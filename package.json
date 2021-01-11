@@ -1,0 +1,13 @@
+{
+  "dependencies": {
+    "prettier": "2.2.1"
+  },
+  "scripts": {
+    "build": "yarn build:version && yarn build:charts && yarn format",
+    "build:version": "python3 version.py",
+    "build:charts": "python3 charts.py",
+    "prettier": "prettier . --write",
+    "black": "black .",
+    "format": "yarn prettier && yarn black"
+  }
+}

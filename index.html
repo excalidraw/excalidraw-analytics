@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1"
+      crossorigin="anonymous"
+    />
+    <title>Excalidraw Analytics</title>
+  </head>
+  <body>
+    <div class="container">
+      <h1 class="display-1 text-center">Excalidraw Analytics</h1>
+      <div id="chart_div" style="width: 100%; height: 640px"></div>
+    </div>
+
+    <script
+      type="text/javascript"
+      src="https://www.gstatic.com/charts/loader.js"
+    ></script>
+
+    <script>
+      google.charts.load("current", {
+        packages: ["corechart"],
+      });
+      google.charts.setOnLoadCallback(drawChart);
+
+      function drawChart() {
+        var data = google.visualization.arrayToDataTable([
+          ["Day", "001880b", "f1fc308", "672068c", "8fa4273", "9b85efa"],
+          ["2021-01-10", 2170, 0, 0, 0, 0],
+          ["2021-01-11", 1901, 4350, 6, 132, 2213],
+          ["2021-01-12", 107, 148, 1, 1, 1822],
+        ]);
+
+        var options = {
+          isStacked: "relative",
+        };
+
+        var chart = new google.visualization.AreaChart(
+          document.getElementById("chart_div")
+        );
+        chart.draw(data, options);
+      }
+    </script>
+  </body>
+</html>
