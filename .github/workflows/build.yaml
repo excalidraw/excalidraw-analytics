@@ -30,4 +30,3 @@ jobs:
             git commit -am "Auto commit: New data"
             git push
           fi
-
