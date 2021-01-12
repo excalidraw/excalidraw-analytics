@@ -1,6 +1,9 @@
-name: Build charts
+name: Build
 
-on: [push]
+on:
+  push:
+  schedule:
+    - cron: "*/30 * * * *"
 
 jobs:
   build:
@@ -13,10 +16,9 @@ jobs:
           python-version: 3.x
       - name: Install dependencies
         run: yarn
-      - name: Build charts
+      - name: Building charts
         env:
           ANALYTICS_PRIVATE_KEY: ${{ secrets.ANALYTICS_PRIVATE_KEY }}
           ANALYTICS_PRIVATE_KEY_ID: ${{ secrets.ANALYTICS_PRIVATE_KEY_ID }}
         run: |
           yarn build
-          git status
