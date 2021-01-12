@@ -1,0 +1,22 @@
+name: Build charts
+
+on: [push]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Set up Python 3
+        uses: actions/setup-python@v2
+        with:
+          python-version: 3.x
+      - name: Install dependencies
+        run: yarn
+      - name: Build charts
+        env:
+          ANALYTICS_PRIVATE_KEY: ${{ secrets.ANALYTICS_PRIVATE_KEY }}
+          ANALYTICS_PRIVATE_KEY_ID: ${{ secrets.ANALYTICS_PRIVATE_KEY_ID }}
+        run: |
+          yarn build
+          git status

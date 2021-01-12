@@ -21,9 +21,10 @@
     ]
   },
   "scripts": {
-    "build": "yarn build:version && yarn build:charts && yarn format",
+    "build": "yarn build:key && yarn build:version && yarn build:charts && yarn format",
     "build:charts": "python3 charts.py",
     "build:version": "python3 version.py",
+    "build:key": "python3 key.py",
     "format": "yarn format:prettier && yarn format:python",
     "format:prettier": "prettier . --write",
     "format:python": "black .",

@@ -87,6 +87,10 @@ def print_rows(days, versions):
 
 
 def main():
+    if not os.path.exists(KEY_FILE):
+        print("Key file not found", KEY_FILE)
+        return
+
     current_date = datetime(2021, 1, 10)
     today = datetime.today()
     while current_date < today:
