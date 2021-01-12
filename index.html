@@ -18,7 +18,7 @@
 
       h1 {
         font-family: "Virgil", var(--bs-font-sans-serif);
-        margin-top: 32px;
+        margin: 32px 0;
       }
 
       footer {
@@ -29,13 +29,16 @@
 
       #chart_div {
         width: 100%;
-        height: 500px;
+        height: 600px;
       }
     </style>
   </head>
   <body>
     <div class="container">
       <h1 class="display-2 text-center">Excalidraw Analytics</h1>
+      <p class="lead text-center">
+        Relatively stacked versions of Excalidraw currenly running.
+      </p>
       <div id="chart_div"></div>
 
       <footer>
@@ -58,10 +61,18 @@
 
       function drawChart() {
         var data = google.visualization.arrayToDataTable([
-          ["Day", "001880b", "f1fc308", "672068c", "8fa4273", "9b85efa"],
-          ["2021-01-10", 2170, 0, 0, 0, 0],
-          ["2021-01-11", 1901, 4350, 6, 132, 2213],
-          ["2021-01-12", 168, 284, 1, 4, 3776],
+          [
+            "Day",
+            "001880b",
+            "f1fc308",
+            "672068c",
+            "8fa4273",
+            "9b85efa",
+            "2dbd7cd",
+          ],
+          ["2021-01-10", 2170, 0, 0, 0, 0, 0],
+          ["2021-01-11", 1901, 4350, 6, 132, 2213, 0],
+          ["2021-01-12", 184, 347, 1, 9, 4593, 119],
         ]);
 
         var options = {
