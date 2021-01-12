@@ -14,3 +14,5 @@ jobs:
         python-version: 3.x
     - name: Install dependencies
       run: yarn
+    - name: Build charts
+      run: yarn build:charts
