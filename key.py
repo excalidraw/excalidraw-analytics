@@ -7,6 +7,9 @@ KEY_FILE = os.path.join(ROOT_DIR, "excalidraw-key.json")
 
 
 def main():
+    print("ANALYTICS_PRIVATE_KEY", os.environ.get("ANALYTICS_PRIVATE_KEY"))
+    print("ANALYTICS_PRIVATE_KEY_ID", os.environ.get("ANALYTICS_PRIVATE_KEY_ID"))
+
     if (
         not os.path.exists(KEY_FILE)
         and os.environ.get("ANALYTICS_PRIVATE_KEY")
