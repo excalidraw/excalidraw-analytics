@@ -10,10 +10,21 @@
       crossorigin="anonymous"
     />
     <title>Excalidraw Analytics</title>
+    <style>
+      @font-face {
+        font-family: "Virgil";
+        src: url("https://excalidraw.com/FG_Virgil.woff2");
+      }
+
+      h1 {
+        font-family: "Virgil", var(--bs-font-sans-serif);
+        margin-top: 32px;
+      }
+    </style>
   </head>
   <body>
     <div class="container">
-      <h1 class="display-1 text-center">Excalidraw Analytics</h1>
+      <h1 class="display-2 text-center">Excalidraw Analytics</h1>
       <div id="chart_div" style="width: 100%; height: 640px"></div>
     </div>
 
@@ -32,7 +43,9 @@
         var data = google.visualization.arrayToDataTable({ data });
 
         var options = {
+          chartArea: { width: "100%", height: "80%" },
           isStacked: "relative",
+          legend: "top",
         };
 
         var chart = new google.visualization.AreaChart(

@@ -10,10 +10,21 @@
       crossorigin="anonymous"
     />
     <title>Excalidraw Analytics</title>
+    <style>
+      @font-face {
+        font-family: "Virgil";
+        src: url("https://excalidraw.com/FG_Virgil.woff2");
+      }
+
+      h1 {
+        font-family: "Virgil", var(--bs-font-sans-serif);
+        margin-top: 32px;
+      }
+    </style>
   </head>
   <body>
     <div class="container">
-      <h1 class="display-1 text-center">Excalidraw Analytics</h1>
+      <h1 class="display-2 text-center">Excalidraw Analytics</h1>
       <div id="chart_div" style="width: 100%; height: 640px"></div>
     </div>
 
@@ -33,11 +44,13 @@
           ["Day", "001880b", "f1fc308", "672068c", "8fa4273", "9b85efa"],
           ["2021-01-10", 2170, 0, 0, 0, 0],
           ["2021-01-11", 1901, 4350, 6, 132, 2213],
-          ["2021-01-12", 114, 159, 1, 2, 1988],
+          ["2021-01-12", 126, 190, 1, 3, 2332],
         ]);
 
         var options = {
+          chartArea: { width: "100%", height: "80%" },
           isStacked: "relative",
+          legend: "top",
         };
 
         var chart = new google.visualization.AreaChart(
