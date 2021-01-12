@@ -3,12 +3,12 @@ import os
 
 ROOT_DIR = os.path.dirname(os.path.realpath(__file__))
 VERSION_DIR = os.path.join(ROOT_DIR, "version")
-INDEX_TEMPLATE_FILE = os.path.join(ROOT_DIR, "index_.html")
+TEMPLATE_FILE = os.path.join(ROOT_DIR, "template.html")
 INDEX_FILE = os.path.join(ROOT_DIR, "index.html")
 
 
 def main():
-    with open(INDEX_TEMPLATE_FILE, "r") as template:
+    with open(TEMPLATE_FILE, "r") as template:
         data = template.read()
 
     _, _, filenames = next(os.walk(VERSION_DIR))

@@ -1,13 +1,32 @@
 # Excalidraw Analytics
 
+### Requirements
+
+- [Node.js](https://nodejs.org/en/)
+- [Python 3](https://www.python.org/downloads/)
+
 ### Install
 
 ```
-pip install --upgrade google-api-python-client oauth2client
+yarn
 ```
 
-### Run
+### Build
 
 ```
-python version.py
+yarn build
+yarn build:version
+yarn build:charts
+```
+
+### Test
+
+Open `index.html`.
+
+### Format
+
+```
+yarn format
+yarn format:prettier
+yarn format:python
 ```

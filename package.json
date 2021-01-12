@@ -1,13 +1,32 @@
 {
   "dependencies": {
+    "husky": "^4.3.7",
+    "lint-staged": "^10.5.3",
     "prettier": "2.2.1"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "license": "MIT",
+  "lint-staged": {
+    "**/*.py": [
+      "black",
+      "git add"
+    ],
+    "**/*.{js,html,md,json}": [
+      "prettier --write",
+      "git add"
+    ]
   },
   "scripts": {
     "build": "yarn build:version && yarn build:charts && yarn format",
-    "build:version": "python3 version.py",
     "build:charts": "python3 charts.py",
-    "prettier": "prettier . --write",
-    "black": "black .",
-    "format": "yarn prettier && yarn black"
+    "build:version": "python3 version.py",
+    "format": "yarn format:prettier && yarn format:python",
+    "format:prettier": "prettier . --write",
+    "format:python": "black .",
+    "postinstall": "pip install --upgrade google-api-python-client oauth2client black"
   }
 }
