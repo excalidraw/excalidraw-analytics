@@ -12,12 +12,10 @@
   "license": "MIT",
   "lint-staged": {
     "**/*.py": [
-      "black",
-      "git add"
+      "black"
     ],
-    "**/*.{js,html,md,json}": [
-      "prettier --write",
-      "git add"
+    "**/*.{js,html,md,json,yaml}": [
+      "prettier --write"
     ]
   },
   "scripts": {

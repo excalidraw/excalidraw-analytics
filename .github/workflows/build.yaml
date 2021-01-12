@@ -20,5 +20,14 @@ jobs:
         env:
           ANALYTICS_PRIVATE_KEY: ${{ secrets.ANALYTICS_PRIVATE_KEY }}
           ANALYTICS_PRIVATE_KEY_ID: ${{ secrets.ANALYTICS_PRIVATE_KEY_ID }}
+        run: yarn build
+      - name: Commit changes
         run: |
-          yarn build
+          FILE_CHANGED=$(git diff index.html)
+          if [ ! -z "${FILE_CHANGED}" ]; then
+            git config --global user.name 'Panayiotis Lipiridis'
+            git config --global user.email 'lipiridis@gmail.com'
+            git add .
+            git commit -am "Auto commit: New data"
+            git push
+          fi
