@@ -14,4 +14,6 @@ jobs:
       - name: Install dependencies
         run: yarn
       - name: Build charts
-        run: yarn build:charts
+        run: |
+          yarn build
+          git status
