@@ -9,6 +9,8 @@ import json
 SCOPES = ["https://www.googleapis.com/auth/analytics.readonly"]
 VIEW_ID = "208661610"
 
+THRESSHOLD = 10
+
 ROOT_DIR = os.path.dirname(os.path.realpath(__file__))
 VERSION_DIR = os.path.join(ROOT_DIR, "version")
 KEY_FILE = os.path.join(ROOT_DIR, "excalidraw-key.json")
@@ -50,7 +52,7 @@ def print_version_response(response, day):
 
         for row in report.get("data", {}).get("rows", []):
             dimensions = row.get("dimensions", [])
-            dateRangeValues = row.get("metrics", [])
+            metrics = row.get("metrics", [])
 
             if "version" not in dimensions:
                 continue
@@ -63,8 +65,13 @@ def print_version_response(response, day):
             if not found:
                 continue
 
-            counts[dimensions[2]] = int(dateRangeValues[0]["values"][0])
-            print(dimensions[2], ":", int(dateRangeValues[0]["values"][0]))
+            hits = int(metrics[0]["values"][0])
+
+            if hits < THRESSHOLD:
+                continue
+
+            counts[dimensions[2]] = hits
+            print(dimensions[2], ":", hits)
 
     return counts
 
@@ -92,7 +99,11 @@ def main():
         return
 
     today = datetime.today()
+
     current_date = today + timedelta(days=-3)
+    # Set current date to 2020-01-10 to count all visits from the beginning:
+    # current_date = datetime(2021, 1, 10)
+
     while current_date <= today:
         day = current_date.strftime("%Y-%m-%d")
         print()
