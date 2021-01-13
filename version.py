@@ -91,9 +91,9 @@ def main():
         print("Key file not found", KEY_FILE)
         return
 
-    current_date = datetime(2021, 1, 10)
     today = datetime.today()
-    while current_date < today:
+    current_date = today + timedelta(days=-3)
+    while current_date <= today:
         day = current_date.strftime("%Y-%m-%d")
         print()
         print(day)
@@ -101,8 +101,9 @@ def main():
         analytics = initialize_analyticsreporting()
         response = get_version_report(analytics, day)
         day_versions = print_version_response(response, day)
-        with open(os.path.join(VERSION_DIR, day + ".json"), "w") as outfile:
-            json.dump(day_versions, outfile, indent=2)
+        if day_versions:
+            with open(os.path.join(VERSION_DIR, day + ".json"), "w") as outfile:
+                json.dump(day_versions, outfile, indent=2)
 
         current_date += timedelta(days=1)
         print()
