@@ -1,0 +1,20 @@
+@font-face {
+  font-family: "Virgil";
+  src: url("https://excalidraw.com/FG_Virgil.woff2");
+}
+
+h1 {
+  font-family: "Virgil", var(--bs-font-sans-serif);
+  margin: 32px 0;
+}
+
+footer {
+  padding: 32px 0;
+  margin-top: 32px;
+  text-align: center;
+}
+
+#version-chart {
+  width: 100%;
+  height: 600px;
+}

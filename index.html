@@ -4,44 +4,18 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css"
       rel="stylesheet"
-      integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1"
-      crossorigin="anonymous"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css"
     />
     <title>Excalidraw Stats</title>
-    <style>
-      @font-face {
-        font-family: "Virgil";
-        src: url("https://excalidraw.com/FG_Virgil.woff2");
-      }
-
-      h1 {
-        font-family: "Virgil", var(--bs-font-sans-serif);
-        margin: 32px 0;
-      }
-
-      footer {
-        padding: 32px 0;
-        margin-top: 32px;
-        text-align: center;
-      }
-
-      #chart_div {
-        width: 100%;
-        height: 600px;
-      }
-    </style>
-
+    <link rel="stylesheet" href="/static/style.css" />
     <script
       async
       src="https://www.googletagmanager.com/gtag/js?id=UA-387204-13"
     ></script>
     <script>
       window.dataLayer = window.dataLayer || [];
-      function gtag() {
-        dataLayer.push(arguments);
-      }
+      const gtag = () => dataLayer.push(arguments);
       gtag("js", new Date());
       gtag("config", "UA-387204-13");
     </script>
@@ -50,11 +24,11 @@
     <div class="container">
       <h1 class="display-2 text-center">Excalidraw Stats</h1>
       <p class="lead text-center">Relatively stacked versions of Excalidraw.</p>
-      <div id="chart_div"></div>
+      <div id="version-chart"></div>
 
       <footer>
         © 2021 <a href="https://excalidraw.com">Excalidraw</a> •
-        <a href="https://github.com/excalidraw/analytics">Source Code</a> •
+        <a href="https://github.com/excalidraw/stats">Source Code</a> •
         <a href="https://status.excalidraw.com">Status</a>
       </footer>
     </div>
@@ -63,16 +37,10 @@
       type="text/javascript"
       src="https://www.gstatic.com/charts/loader.js"
     ></script>
-
-    <script type="text/javascript" src="/open-color.js"></script>
+    <script type="text/javascript" src="/static/open-color.js"></script>
     <script>
-      google.charts.load("current", {
-        packages: ["corechart"],
-      });
-      google.charts.setOnLoadCallback(drawChart);
-
-      function drawChart() {
-        var data = google.visualization.arrayToDataTable([
+      const drawVersionChart = () => {
+        const data = google.visualization.arrayToDataTable([
           [
             "Day",
             "001880b",
@@ -87,10 +55,9 @@
           ["2021-01-10", 2170, 0, 0, 0, 0, 0, 0, 0],
           ["2021-01-11", 1901, 4350, 132, 2213, 0, 0, 0, 0],
           ["2021-01-12", 250, 502, 17, 5042, 685, 1743, 0, 0],
-          ["2021-01-13", 86, 193, 0, 531, 0, 1571, 1157, 1137],
+          ["2021-01-13", 87, 196, 0, 542, 0, 1571, 1157, 1263],
         ]);
-
-        var options = {
+        const options = {
           chartArea: { width: "100%", height: "80%" },
           isStacked: "relative",
           legend: "top",
@@ -109,12 +76,13 @@
             oc.grape[5],
           ],
         };
-
-        var chart = new google.visualization.AreaChart(
-          document.getElementById("chart_div")
+        const chart = new google.visualization.AreaChart(
+          document.getElementById("version-chart")
         );
         chart.draw(data, options);
-      }
+      };
+      google.charts.load("current", { packages: ["corechart"] });
+      google.charts.setOnLoadCallback(drawVersionChart);
     </script>
   </body>
 </html>

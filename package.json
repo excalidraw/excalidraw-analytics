@@ -14,7 +14,7 @@
     "**/*.py": [
       "black"
     ],
-    "**/*.{js,html,md,json,yaml}": [
+    "**/*.{js,html,md,json,yaml,css}": [
       "prettier --write"
     ]
   },
