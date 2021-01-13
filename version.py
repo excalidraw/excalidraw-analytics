@@ -101,8 +101,8 @@ def main():
     today = datetime.today()
 
     current_date = today + timedelta(days=-3)
-    # Set current date to 2020-01-10 to count all visits from the beginning:
-    # current_date = datetime(2021, 1, 10)
+    # Set current date to 2020-01-11 to count all visits from the beginning:
+    # current_date = datetime(2021, 1, 11)
 
     while current_date <= today:
         day = current_date.strftime("%Y-%m-%d")
