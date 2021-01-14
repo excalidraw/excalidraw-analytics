@@ -1,3 +1,5 @@
+
+from datetime import datetime
 import json
 import os
 
@@ -6,6 +8,9 @@ VERSION_DIR = os.path.join(ROOT_DIR, "version")
 TEMPLATE_FILE = os.path.join(ROOT_DIR, "template.html")
 INDEX_FILE = os.path.join(ROOT_DIR, "index.html")
 
+
+def string2date(string):
+    return datetime.strptime(string, '%Y-%m-%d').strftime('%d %b')
 
 def main():
     with open(TEMPLATE_FILE, "r") as template:
@@ -31,7 +36,7 @@ def main():
         chart_rows[len(chart_rows) - 1].append(version[-7:])
 
     for day in sorted_days:
-        chart_rows.append([day[0]])
+        chart_rows.append([string2date(day[0])])
         for version in sorted_versions:
             if version in day[1]:
                 chart_rows[len(chart_rows) - 1].append((day[1][version]))
@@ -49,7 +54,7 @@ def main():
     version_head = "<tr><th>Version</th>"
 
     for day in sorted_days:
-        version_head += "<th>%s</th>" % day[0]
+        version_head += "<th>%s</th>" % string2date(day[0])
 
     version_head += "</tr>"
     version_body = ""
