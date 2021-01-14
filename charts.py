@@ -1,4 +1,3 @@
-
 from datetime import datetime
 import json
 import os
@@ -10,7 +9,8 @@ INDEX_FILE = os.path.join(ROOT_DIR, "index.html")
 
 
 def string2date(string):
-    return datetime.strptime(string, '%Y-%m-%d').strftime('%d %b')
+    return datetime.strptime(string, "%Y-%m-%d").strftime("%d %b")
+
 
 def main():
     with open(TEMPLATE_FILE, "r") as template:
