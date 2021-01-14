@@ -56,8 +56,8 @@ def main():
 
     for row in report:
         version_body += (
-            "<tr><td><a href='https://github.com/excalidraw/excalidraw/commit/%s'><code>%s</code></a></td>"
-            % (row[-7:], row)
+            "<tr><td><code>%s [<a href='https://github.com/excalidraw/excalidraw/commit/%s'>%s</a>]</code></td>"
+            % (row[:16].replace('T', ' ').replace('Z-', ' ['), row[-7:], row[-7:])
         )
         for day in report[row]:
             version_body += "<td>%s</td>" % (report[row][day] or "-")
