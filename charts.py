@@ -53,16 +53,6 @@ def main():
     sorted_days = sorted(days.items())
     sorted_versions = sorted(versions)
 
-    # normalize days
-    for day in sorted_days:
-        total = 0
-        for version in day[1]:
-            total += day[1][version]
-
-        if total > 0:
-            for version in day[1]:
-                day[1][version] = day[1][version] / total
-
     # find maxValue
     maxValue = 0
 
