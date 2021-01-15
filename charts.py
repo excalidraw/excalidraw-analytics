@@ -1,6 +1,8 @@
 from datetime import datetime
+from opencolor import oc
 import json
 import os
+
 
 ROOT_DIR = os.path.dirname(os.path.realpath(__file__))
 VERSION_DIR = os.path.join(ROOT_DIR, "version")
@@ -8,8 +10,26 @@ TEMPLATE_FILE = os.path.join(ROOT_DIR, "template.html")
 INDEX_FILE = os.path.join(ROOT_DIR, "index.html")
 
 
+colors = [
+    oc["lime"][0],
+    oc["lime"][1],
+    oc["lime"][2],
+    oc["lime"][3],
+    oc["lime"][4],
+    oc["lime"][5],
+    oc["lime"][6],
+]
+
+
 def string2date(string):
     return datetime.strptime(string, "%Y-%m-%d").strftime("%d %b")
+
+
+def renderCell(value, max):
+    color_id = round((value / max) * (len(colors) - 1))
+    if value:
+        return "<td style='background-color: %s'>%s</td>" % (colors[color_id], value)
+    return "<td style='background-color: %s'>-</td>" % (oc["gray"][0])
 
 
 def main():
@@ -30,6 +50,13 @@ def main():
 
     sorted_days = sorted(days.items())
     sorted_versions = sorted(versions)
+
+    # find maxValue
+    maxValue = 0
+
+    for day in sorted_days:
+        for version in day[1]:
+            maxValue = max(maxValue, day[1][version])
 
     chart_rows = [["Day"]]
     for version in sorted_versions:
@@ -65,13 +92,14 @@ def main():
             % (row[:16].replace("T", " "), row[-7:], row[-7:])
         )
         for day in report[row]:
-            version_body += "<td>%s</td>" % (report[row][day] or "-")
+            version_body += renderCell(report[row][day], maxValue)
         version_body += "</tr>\n"
 
     data = data.replace("{ data }", "%r" % chart_rows)
     data = data.replace("{ version_head }", version_head)
     data = data.replace("{ version_body }", version_body)
 
+    print(totals)
     with open(INDEX_FILE, "w") as index:
         index.write(data)
 
