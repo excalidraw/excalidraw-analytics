@@ -17,7 +17,6 @@ colors = [
     oc["lime"][3],
     oc["lime"][4],
     oc["lime"][5],
-    oc["lime"][6],
 ]
 
 
@@ -28,7 +27,7 @@ def string2date(string):
 def renderCell(value, max):
     color_id = round((value / max) * (len(colors) - 1))
     if value:
-        return "<td style='background-color: %s'>%s</td>" % (colors[color_id], value)
+        return "<td style='background-color: %s'>%2.1f%%</td>" % (colors[color_id], value * 100)
     return "<td style='background-color: %s'>-</td>" % (oc["gray"][0])
 
 
@@ -50,6 +49,16 @@ def main():
 
     sorted_days = sorted(days.items())
     sorted_versions = sorted(versions)
+
+    # normalize days
+    for day in sorted_days:
+        total = 0
+        for version in day[1]:
+            total += day[1][version]
+
+        if total > 0:
+            for version in day[1]:
+                day[1][version] = day[1][version] / total
 
     # find maxValue
     maxValue = 0
