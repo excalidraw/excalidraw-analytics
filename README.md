@@ -1,4 +1,4 @@
-# Excalidraw Analytics
+# Excalidraw Stats
 
 ### Requirements
 
