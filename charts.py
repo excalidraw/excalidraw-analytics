@@ -99,7 +99,6 @@ def main():
     data = data.replace("{ version_head }", version_head)
     data = data.replace("{ version_body }", version_body)
 
-    print(totals)
     with open(INDEX_FILE, "w") as index:
         index.write(data)
 
