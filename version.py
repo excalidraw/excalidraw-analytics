@@ -76,23 +76,6 @@ def print_version_response(response, day):
     return counts
 
 
-def print_header(versions):
-    print(["Date"] + [version[-7:] for version in versions], ",")
-
-
-def print_rows(days, versions):
-    for day in days:
-        row = []
-        row.append(day[0])
-
-        for version in versions:
-            if version in day[1]:
-                row.append(day[1][version])
-            else:
-                row.append(0)
-        print(row, ",")
-
-
 def main():
     if not os.path.exists(KEY_FILE):
         print("Key file not found", KEY_FILE)
@@ -112,6 +95,18 @@ def main():
         analytics = initialize_analyticsreporting()
         response = get_version_report(analytics, day)
         day_versions = print_version_response(response, day)
+
+        # noramalize days
+        total_in_day = 0
+        for versions in day_versions:
+            total_in_day += day_versions[versions]
+
+        for versions in day_versions:
+            if total_in_day > 0:
+                day_versions[versions] = (
+                    round(day_versions[versions] / total_in_day * 10000) / 10000
+                )
+
         if day_versions:
             with open(os.path.join(VERSION_DIR, day + ".json"), "w") as outfile:
                 json.dump(day_versions, outfile, indent=2)
