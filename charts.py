@@ -27,7 +27,10 @@ def string2date(string):
 def renderCell(value, max):
     color_id = round((value / max) * (len(colors) - 1))
     if value:
-        return "<td style='background-color: %s'>%2.1f%%</td>" % (colors[color_id], value * 100)
+        return "<td style='background-color: %s'>%2.1f%%</td>" % (
+            colors[color_id],
+            value * 100,
+        )
     return "<td style='background-color: %s'>-</td>" % (oc["gray"][0])
 
 
