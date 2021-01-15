@@ -88,7 +88,12 @@ def main():
     version_head += "</tr>"
     version_body = ""
 
+    current_version_date = ''
     for row in report:
+        version_date = row[:10]
+        if version_date != current_version_date:
+            version_body += "<tr><td style='background-color: {}' colspan='{}'></td></tr>".format(oc["gray"][0], 1 + len(report[row]))
+
         version_body += (
             "<tr><td><code>%s [<a href='https://github.com/excalidraw/excalidraw/commit/%s'>%s</a>]</code></td>"
             % (row[:16].replace("T", " "), row[-7:], row[-7:])
@@ -96,6 +101,7 @@ def main():
         for day in report[row]:
             version_body += renderCell(report[row][day], maxValue)
         version_body += "</tr>\n"
+        current_version_date = version_date
 
     data = data.replace("{ data }", "%r" % chart_rows)
     data = data.replace("{ version_head }", version_head)
