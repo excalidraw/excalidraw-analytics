@@ -100,7 +100,7 @@ def main():
             if version in day[1]:
                 report[version][day[0]] = day[1][version]
 
-    version_head = "<tr><th>Timestamp</th><th>Hash</th><th></th>"
+    version_head = "<tr><th>Version</th><th>Hash</th><th></th>"
 
     for day in sorted_days:
         version_head += "<th>%s</th>" % string2date(day[0])
@@ -120,25 +120,16 @@ def main():
             (index - len(sorted_versions)) % len(chart_colors_text)
         ]
         if version_date != current_version_date:
-            version_body += (
-                "<tr><td style='background-color: {}' colspan='{}'></td></tr>".format(
-                    oc["gray"][0], 3 + len(report[row])
-                )
+            version_body += "<tr><td style='background-color: {}' colspan='{}'></td></tr>".format(
+                oc["gray"][0], 3 + len(report[row])
             )
         version_body += (
             "<tr><td style='background-color: %s; color: %s;'><code>%s</code></td>"
-            % (
-                color_bg,
-                color_text,
-                version_datetime,
-            )
+            % (color_bg, color_text, version_datetime,)
         )
-        version_body += "<td style='background-color: %s;'><code><a style='color: %s;' href='https://github.com/excalidraw/excalidraw/commit/%s'>%s</a></code></td><td style='background-color: %s'></td>" % (
-            color_bg,
-            color_text,
-            version_hash,
-            version_hash,
-            oc["gray"][0],
+        version_body += (
+            "<td style='background-color: %s;'><code><a style='color: %s;' href='https://github.com/excalidraw/excalidraw/commit/%s'>%s</a></code></td><td style='background-color: %s'></td>"
+            % (color_bg, color_text, version_hash, version_hash, oc["gray"][0],)
         )
         for day in report[row]:
             version_body += renderCell(report[row][day], maxValue)
