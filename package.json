@@ -1,23 +1,8 @@
 {
   "dependencies": {
-    "husky": "^4.3.7",
-    "lint-staged": "^10.5.3",
     "prettier": "2.2.1"
   },
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged"
-    }
-  },
   "license": "MIT",
-  "lint-staged": {
-    "**/*.py": [
-      "black"
-    ],
-    "**/*.{js,html,md,json,yaml,css}": [
-      "prettier --write"
-    ]
-  },
   "scripts": {
     "build": "yarn build:key && yarn build:version && yarn build:charts && yarn format",
     "build:charts": "python3 charts.py",
