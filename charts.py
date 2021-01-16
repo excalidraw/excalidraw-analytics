@@ -100,7 +100,7 @@ def main():
             if version in day[1]:
                 report[version][day[0]] = day[1][version]
 
-    version_head = "<tr><th>Version</th><th>Hash</th><th></th>"
+    version_head = "<tr><th>Version</th><th>Commit</th><th></th>"
 
     for day in sorted_days:
         version_head += "<th>%s</th>" % string2date(day[0])
