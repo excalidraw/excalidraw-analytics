@@ -10,19 +10,24 @@ TEMPLATE_FILE = os.path.join(ROOT_DIR, "template.html")
 INDEX_FILE = os.path.join(ROOT_DIR, "index.html")
 
 
-chart_colors = [
-    oc["grape"][1],
-    oc["red"][1],
-    oc["orange"][1],
-    oc["yellow"][1],
-    oc["lime"][1],
-    oc["green"][1],
-    oc["teal"][1],
-    oc["cyan"][1],
-    oc["blue"][1],
-    oc["indigo"][1],
-    oc["violet"][1],
-]
+def chart_colors(index):
+    return [
+        oc["grape"][index],
+        oc["red"][index],
+        oc["orange"][index],
+        oc["yellow"][index],
+        oc["lime"][index],
+        oc["green"][index],
+        oc["teal"][index],
+        oc["cyan"][index],
+        oc["blue"][index],
+        oc["indigo"][index],
+        oc["violet"][index],
+    ]
+
+
+chart_colors_bg = chart_colors(1)
+chart_colors_text = chart_colors(9)
 
 
 colors = [
@@ -95,7 +100,7 @@ def main():
             if version in day[1]:
                 report[version][day[0]] = day[1][version]
 
-    version_head = "<tr><th>Version</th>"
+    version_head = "<tr><th>Timestamp</th><th>Hash</th><th></th>"
 
     for day in sorted_days:
         version_head += "<th>%s</th>" % string2date(day[0])
@@ -106,17 +111,25 @@ def main():
     current_version_date = ""
     for index, row in enumerate(report):
         version_date = row[:10]
+        version_datetime = row[:16].replace("T", " ")
+        version_hash = row[-7:]
+        color_bg = chart_colors_bg[
+            (index - len(sorted_versions)) % len(chart_colors_bg)
+        ]
+        color_text = chart_colors_text[
+            (index - len(sorted_versions)) % len(chart_colors_text)
+        ]
         if version_date != current_version_date:
-            version_body += (
-                "<tr><td style='background-color: {}' colspan='{}'></td></tr>".format(
-                    oc["gray"][0], 1 + len(report[row])
-                )
+            version_body += "<tr><td style='background-color: {}' colspan='{}'></td></tr>".format(
+                oc["gray"][0], 3 + len(report[row])
             )
-        version_body += "<tr><td style='background-color: %s'><code>%s [<a href='https://github.com/excalidraw/excalidraw/commit/%s'>%s</a>]</code></td>" % (
-            chart_colors[(index - len(sorted_versions)) % len(chart_colors)],
-            row[:16].replace("T", " "),
-            row[-7:],
-            row[-7:],
+        version_body += (
+            "<tr><td style='background-color: %s; color: %s;'><code>%s</code></td>"
+            % (color_bg, color_text, version_datetime,)
+        )
+        version_body += (
+            "<td style='background-color: %s;'><code><a style='color: %s;' href='https://github.com/excalidraw/excalidraw/commit/%s'>%s</a></code></td><td style='background-color: %s'></td>"
+            % (color_bg, color_text, version_hash, version_hash, oc["gray"][0],)
         )
         for day in report[row]:
             version_body += renderCell(report[row][day], maxValue)
