@@ -107,17 +107,16 @@ def main():
     for index, row in enumerate(report):
         version_date = row[:10]
         if version_date != current_version_date:
-            version_body += "<tr><td style='background-color: {}' colspan='{}'></td></tr>".format(
-                oc["gray"][0], 1 + len(report[row])
+            version_body += (
+                "<tr><td style='background-color: {}' colspan='{}'></td></tr>".format(
+                    oc["gray"][0], 1 + len(report[row])
+                )
             )
-        version_body += (
-            "<tr><td style='background-color: %s'><code>%s [<a href='https://github.com/excalidraw/excalidraw/commit/%s'>%s</a>]</code></td>"
-            % (
-                chart_colors[(index - len(sorted_versions)) % len(chart_colors)],
-                row[:16].replace("T", " "),
-                row[-7:],
-                row[-7:],
-            )
+        version_body += "<tr><td style='background-color: %s'><code>%s [<a href='https://github.com/excalidraw/excalidraw/commit/%s'>%s</a>]</code></td>" % (
+            chart_colors[(index - len(sorted_versions)) % len(chart_colors)],
+            row[:16].replace("T", " "),
+            row[-7:],
+            row[-7:],
         )
         for day in report[row]:
             version_body += renderCell(report[row][day], maxValue)
