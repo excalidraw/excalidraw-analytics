@@ -83,7 +83,7 @@ def main():
 
     today = datetime.today()
 
-    current_date = today + timedelta(days=-2)
+    current_date = today + timedelta(days=-1)
     # Set current date to 2020-01-11 to count all visits from the beginning:
     # current_date = datetime(2021, 1, 11)
 
