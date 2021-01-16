@@ -10,6 +10,21 @@ TEMPLATE_FILE = os.path.join(ROOT_DIR, "template.html")
 INDEX_FILE = os.path.join(ROOT_DIR, "index.html")
 
 
+chart_colors = [
+    oc["grape"][1],
+    oc["red"][1],
+    oc["orange"][1],
+    oc["yellow"][1],
+    oc["lime"][1],
+    oc["green"][1],
+    oc["teal"][1],
+    oc["cyan"][1],
+    oc["blue"][1],
+    oc["indigo"][1],
+    oc["violet"][1],
+]
+
+
 colors = [
     oc["lime"][0],
     oc["lime"][1],
@@ -89,18 +104,20 @@ def main():
     version_body = ""
 
     current_version_date = ""
-    for row in report:
+    for index, row in enumerate(report):
         version_date = row[:10]
         if version_date != current_version_date:
-            version_body += (
-                "<tr><td style='background-color: {}' colspan='{}'></td></tr>".format(
-                    oc["gray"][0], 1 + len(report[row])
-                )
+            version_body += "<tr><td style='background-color: {}' colspan='{}'></td></tr>".format(
+                oc["gray"][0], 1 + len(report[row])
             )
-
         version_body += (
-            "<tr><td><code>%s [<a href='https://github.com/excalidraw/excalidraw/commit/%s'>%s</a>]</code></td>"
-            % (row[:16].replace("T", " "), row[-7:], row[-7:])
+            "<tr><td style='background-color: %s'><code>%s [<a href='https://github.com/excalidraw/excalidraw/commit/%s'>%s</a>]</code></td>"
+            % (
+                chart_colors[(index - len(sorted_versions)) % len(chart_colors)],
+                row[:16].replace("T", " "),
+                row[-7:],
+                row[-7:],
+            )
         )
         for day in report[row]:
             version_body += renderCell(report[row][day], maxValue)
