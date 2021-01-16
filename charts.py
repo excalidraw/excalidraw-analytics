@@ -125,15 +125,12 @@ def main():
                     oc["gray"][0], 3 + len(report[row])
                 )
             )
-        version_body += (
-            "<tr><td style='background-color: %s; color: %s;'><code>%s</code></td>"
-            % (
-                color_bg,
-                color_text,
-                version_datetime,
-            )
+        version_body += "<tr><td style='background-color: {}; color: {};'><code>{}</code></td>".format(
+            color_bg,
+            color_text,
+            version_datetime,
         )
-        version_body += "<td style='background-color: %s;'><code><a style='color: %s;' href='https://github.com/excalidraw/excalidraw/commit/%s'>%s</a></code></td><td style='background-color: %s'></td>" % (
+        version_body += "<td style='background-color: {};'><code><a style='color: {};' href='https://github.com/excalidraw/excalidraw/commit/{}'>{}</a></code></td><td style='background-color: {}'></td>".format(
             color_bg,
             color_text,
             version_hash,
