@@ -47,8 +47,8 @@ def get_version_report(analytics, day="yesterday"):
 def print_version_response(response, day):
     counts = {}
     for report in response.get("reports", []):
-        columnHeader = report.get("columnHeader", {})
-        dimensionHeaders = columnHeader.get("dimensions", [])
+        column_header = report.get("columnHeader", {})
+        dimension_headers = column_header.get("dimensions", [])
 
         for row in report.get("data", {}).get("rows", []):
             dimensions = row.get("dimensions", [])
@@ -58,7 +58,7 @@ def print_version_response(response, day):
                 continue
 
             found = False
-            for header, dimension in zip(dimensionHeaders, dimensions):
+            for header, dimension in zip(dimension_headers, dimensions):
                 if header == "ga:eventLabel" and len(dimension) == 28:
                     found = True
 
@@ -84,7 +84,7 @@ def main():
     today = datetime.today()
 
     current_date = today + timedelta(days=-1)
-    # Set current date to 2020-01-11 to count all visits from the beginning:
+    # Set current date to 2021-01-11 to count all visits from the beginning:
     # current_date = datetime(2021, 1, 11)
 
     while current_date <= today:
