@@ -87,12 +87,12 @@ def main():
     # Set current date to 2021-01-11 to count all visits from the beginning:
     # current_date = datetime(2021, 1, 11)
 
+    analytics = initialize_analyticsreporting()
     while current_date <= today:
         day = current_date.strftime("%Y-%m-%d")
         print()
         print(day)
         print("-" * 40)
-        analytics = initialize_analyticsreporting()
         response = get_version_report(analytics, day)
         day_versions = print_version_response(response, day)
 
