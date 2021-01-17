@@ -28,15 +28,14 @@ def chart_colors(index):
 
 chart_colors_bg = chart_colors(1)
 chart_colors_text = chart_colors(9)
-
-
-colors = [
+empty_color = oc["gray"][1]
+usage_colors = [
     oc["lime"][0],
     oc["lime"][1],
     oc["lime"][2],
     oc["lime"][3],
-    oc["lime"][4],
     oc["lime"][5],
+    oc["lime"][6],
 ]
 
 
@@ -44,14 +43,14 @@ def string2date(string):
     return datetime.strptime(string, "%Y-%m-%d").strftime("%d %b")
 
 
-def renderCell(value, max):
-    color_id = round((value / max) * (len(colors) - 1))
+def render_cell(value, max):
+    color_id = round((value / max) * (len(usage_colors) - 1))
     if value:
         return "<td style='background-color: %s'>%2.1f%%</td>" % (
-            colors[color_id],
+            usage_colors[color_id],
             value * 100,
         )
-    return "<td style='background-color: %s'>-</td>" % (oc["gray"][0])
+    return "<td style='background-color: %s'>-</td>" % (empty_color)
 
 
 def main():
@@ -73,12 +72,12 @@ def main():
     sorted_days = sorted(days.items())
     sorted_versions = sorted(versions)
 
-    # find maxValue
-    maxValue = 0
+    # find max_value
+    max_value = 0
 
     for day in sorted_days:
         for version in day[1]:
-            maxValue = max(maxValue, day[1][version])
+            max_value = max(max_value, day[1][version])
 
     chart_rows = [["Day"]]
     for version in sorted_versions:
@@ -100,7 +99,9 @@ def main():
             if version in day[1]:
                 report[version][day[0]] = day[1][version]
 
-    version_head = "<tr><th>Version</th><th>Commit</th><th></th>"
+    version_head = "<tr><th>Version</th><th>Commit</th><th style='background-color: {}'></th>".format(
+        empty_color
+    )
 
     for day in sorted_days:
         version_head += "<th>%s</th>" % string2date(day[0])
@@ -122,7 +123,7 @@ def main():
         if version_date != current_version_date:
             version_body += (
                 "<tr><td style='background-color: {}' colspan='{}'></td></tr>".format(
-                    oc["gray"][0], 3 + len(report[row])
+                    empty_color, 3 + len(report[row])
                 )
             )
         version_body += "<tr><td style='background-color: {}; color: {};'><code>{}</code></td>".format(
@@ -135,10 +136,10 @@ def main():
             color_text,
             version_hash,
             version_hash,
-            oc["gray"][0],
+            empty_color,
         )
         for day in report[row]:
-            version_body += renderCell(report[row][day], maxValue)
+            version_body += render_cell(report[row][day], max_value)
         version_body += "</tr>\n"
         current_version_date = version_date
 
