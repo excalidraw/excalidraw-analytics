@@ -1,4 +1,6 @@
+from datetime import date
 from datetime import datetime
+from datetime import timedelta
 from opencolor import oc
 import json
 import os
@@ -8,6 +10,7 @@ ROOT_DIR = os.path.dirname(os.path.realpath(__file__))
 VERSION_DIR = os.path.join(ROOT_DIR, "version")
 TEMPLATE_FILE = os.path.join(ROOT_DIR, "template.html")
 INDEX_FILE = os.path.join(ROOT_DIR, "index.html")
+MAX_DAYS = 8
 
 
 def chart_colors(index):
@@ -38,6 +41,12 @@ usage_colors = [
     oc["lime"][6],
 ]
 
+def parse_day(filename):
+    filename = filename.replace(".json", "")
+    file_date = datetime.strptime(filename, "%Y-%m-%d")
+    today = datetime.today()
+    return file_date > today + timedelta(days=-MAX_DAYS)
+
 
 def string2date(string):
     return datetime.strptime(string, "%Y-%m-%d").strftime("%d %b")
@@ -63,6 +72,8 @@ def main():
     versions = set()
 
     for filename in filenames:
+        if not parse_day(filename):
+            continue
         with open(os.path.join(VERSION_DIR, filename), "r") as day_json:
             day = json.load(day_json)
         days[filename.replace(".json", "")] = day
