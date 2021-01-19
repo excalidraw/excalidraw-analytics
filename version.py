@@ -61,7 +61,7 @@ def print_version_response(response, day):
                 if header == "ga:eventLabel" and len(dimension) == 28:
                     version = dimensions[2]
                 elif header == "ga:eventLabel" and dimension == "size":
-                    version = "2021-01-09T00:00:00Z"
+                    version = "2021-01-10T00:00:00Z"
 
             if not version:
                 continue
