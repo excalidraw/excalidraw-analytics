@@ -131,13 +131,21 @@ def main():
             color_text,
             version_datetime,
         )
-        version_body += "<td style='background-color: {};'><code><a style='color: {};' href='https://github.com/excalidraw/excalidraw/commit/{}'>{}</a></code></td><td style='background-color: {}'></td>".format(
-            color_bg,
-            color_text,
-            version_hash,
-            version_hash,
-            empty_color,
-        )
+
+        # older version
+        if len(row) == 20:
+            version_body += "<td style='background-color: {};'></td><td style='background-color: {}'></td>".format(
+                color_bg,
+                empty_color,
+            )
+        else:
+            version_body += "<td style='background-color: {};'><code><a style='color: {};' href='https://github.com/excalidraw/excalidraw/commit/{}'>{}</a></code></td><td style='background-color: {}'></td>".format(
+                color_bg,
+                color_text,
+                version_hash,
+                version_hash,
+                empty_color,
+            )
         for day in report[row]:
             version_body += render_cell(report[row][day], max_value)
         version_body += "</tr>\n"

@@ -53,16 +53,17 @@ def print_version_response(response, day):
         for row in report.get("data", {}).get("rows", []):
             dimensions = row.get("dimensions", [])
             metrics = row.get("metrics", [])
-
-            if "version" not in dimensions:
+            if ("version" not in dimensions) and ("size" not in dimensions):
                 continue
 
-            found = False
+            version = ""
             for header, dimension in zip(dimension_headers, dimensions):
                 if header == "ga:eventLabel" and len(dimension) == 28:
-                    found = True
+                    version = dimensions[2]
+                elif header == "ga:eventLabel" and dimension == "size":
+                    version = "2021-01-09T00:00:00Z"
 
-            if not found:
+            if not version:
                 continue
 
             hits = int(metrics[0]["values"][0])
@@ -70,8 +71,8 @@ def print_version_response(response, day):
             if hits < THRESSHOLD:
                 continue
 
-            counts[dimensions[2]] = hits
-            print(dimensions[2], ":", hits)
+            counts[version] = hits
+            print(version, ":", hits)
 
     return counts
 
