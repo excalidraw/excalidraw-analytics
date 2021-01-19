@@ -81,7 +81,9 @@ def main():
 
     chart_rows = [["Day"]]
     for version in sorted_versions:
-        chart_rows[len(chart_rows) - 1].append(version[-7:] if len(version) == 28 else "Older")
+        chart_rows[len(chart_rows) - 1].append(
+            version[-7:] if len(version) == 28 else "Older"
+        )
 
     for day in sorted_days:
         chart_rows.append([string2date(day[0])])
