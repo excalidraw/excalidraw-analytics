@@ -45,7 +45,7 @@ def parse_day(filename):
     filename = filename.replace(".json", "")
     file_date = datetime.strptime(filename, "%Y-%m-%d")
     today = datetime.today()
-    return file_date > today + timedelta(days=-MAX_DAYS-1)
+    return file_date > today + timedelta(days=-MAX_DAYS - 1)
 
 
 def string2date(string):
