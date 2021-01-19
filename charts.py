@@ -41,6 +41,7 @@ usage_colors = [
     oc["lime"][6],
 ]
 
+
 def parse_day(filename):
     filename = filename.replace(".json", "")
     file_date = datetime.strptime(filename, "%Y-%m-%d")
@@ -50,6 +51,10 @@ def parse_day(filename):
 
 def string2date(string):
     return datetime.strptime(string, "%Y-%m-%d").strftime("%d %b")
+
+
+def string2day(string):
+    return datetime.strptime(string, "%Y-%m-%d").strftime("%a")
 
 
 def render_cell(value, max):
@@ -134,30 +139,21 @@ def main():
             (index - len(sorted_versions)) % len(chart_colors_text)
         ]
         if version_date != current_version_date:
-            version_body += (
-                "<tr><td style='background-color: {}' colspan='{}'></td></tr>".format(
-                    empty_color, 3 + len(report[row])
-                )
+            version_body += "<tr><td style='background-color: {}' colspan='{}'></td></tr>".format(
+                empty_color, 3 + len(report[row])
             )
         version_body += "<tr><td style='background-color: {}; color: {};'><code>{}</code></td>".format(
-            color_bg,
-            color_text,
-            version_datetime,
+            color_bg, color_text, version_datetime,
         )
 
         # older version
         if len(row) == 20:
             version_body += "<td style='background-color: {};'></td><td style='background-color: {}'></td>".format(
-                color_bg,
-                empty_color,
+                color_bg, empty_color,
             )
         else:
             version_body += "<td style='background-color: {};'><code><a style='color: {};' href='https://github.com/excalidraw/excalidraw/commit/{}'>{}</a></code></td><td style='background-color: {}'></td>".format(
-                color_bg,
-                color_text,
-                version_hash,
-                version_hash,
-                empty_color,
+                color_bg, color_text, version_hash, version_hash, empty_color,
             )
         for day in report[row]:
             version_body += render_cell(report[row][day], max_value)
