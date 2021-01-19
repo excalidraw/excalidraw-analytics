@@ -41,6 +41,7 @@ usage_colors = [
     oc["lime"][6],
 ]
 
+
 def parse_day(filename):
     filename = filename.replace(".json", "")
     file_date = datetime.strptime(filename, "%Y-%m-%d")
