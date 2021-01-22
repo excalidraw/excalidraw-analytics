@@ -8,7 +8,7 @@
     "build:charts": "python3 charts.py",
     "build:version": "python3 version.py",
     "build:key": "python3 key.py",
-    "format": "yarn format:prettier && yarn format:python",
+    "format": "yarn format:prettier && yarn format:python && git status",
     "format:prettier": "prettier . --write",
     "format:python": "black .",
     "postinstall": "pip install --upgrade google-api-python-client oauth2client black"
