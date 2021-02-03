@@ -110,7 +110,7 @@ def main():
 
         if day_versions:
             with open(os.path.join(VERSION_DIR, day + ".json"), "w") as outfile:
-                json.dump(day_versions, outfile, indent=2)
+                json.dump(day_versions, outfile, indent=2, sort_keys=True)
 
         current_date += timedelta(days=1)
         print()
