@@ -9,7 +9,7 @@ ROOT_DIR = os.path.dirname(os.path.realpath(__file__))
 VERSION_DIR = os.path.join(ROOT_DIR, "version")
 TEMPLATE_FILE = os.path.join(ROOT_DIR, "template.html")
 INDEX_FILE = os.path.join(ROOT_DIR, "index.html")
-MAX_DAYS = 8
+MAX_DAYS = 7
 
 
 def chart_colors(index):
