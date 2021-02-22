@@ -2,6 +2,11 @@
 # yarn lockfile v1
 
 
+"@excalidraw/prettier-config@1.0.0":
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/@excalidraw/prettier-config/-/prettier-config-1.0.0.tgz#ce83d83b5172363f863a3771569a7d61f9d797ec"
+  integrity sha512-SCwJua+FDyydPj4MQVhsn7v7Nme2qyAsSbnv83RTbNhWhqQDO+td502zwhDP8KIFc1Qb+PyRM8Bk5P+JEE44/g==
+
 prettier@2.2.1:
   version "2.2.1"
   resolved "https://registry.yarnpkg.com/prettier/-/prettier-2.2.1.tgz#795a1a78dd52f073da0cd42b21f9c91381923ff5"

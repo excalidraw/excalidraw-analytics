@@ -1,8 +1,10 @@
 {
   "dependencies": {
+    "@excalidraw/prettier-config": "1.0.0",
     "prettier": "2.2.1"
   },
   "license": "MIT",
+  "prettier": "@excalidraw/prettier-config",
   "scripts": {
     "build": "yarn build:key && yarn build:version && yarn build:charts && yarn format",
     "build:charts": "python3 charts.py",
