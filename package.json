@@ -1,7 +1,7 @@
 {
   "dependencies": {
     "@excalidraw/prettier-config": "1.0.2",
-    "prettier": "2.2.1"
+    "prettier": "2.3.2"
   },
   "license": "MIT",
   "prettier": "@excalidraw/prettier-config",
