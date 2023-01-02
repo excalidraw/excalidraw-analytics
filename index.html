@@ -77,31 +77,54 @@
               <th style="background-color: #f1f3f5"></th>
               <th style="background-color: #ffffff">Tue<br />27 Dec</th>
               <th style="background-color: #ffffff">Wed<br />28 Dec</th>
+              <th style="background-color: #ffffff">Mon<br />02 Jan</th>
             </tr>
           </thead>
           <tbody>
             <tr>
-              <td style="background-color: #f1f3f5" colspan="5"></td>
+              <td style="background-color: #f1f3f5" colspan="6"></td>
             </tr>
             <tr>
-              <td style="background-color: #c5f6fa; color: #0b7285">
+              <td style="background-color: #c3fae8; color: #087f5b">
                 <code>2022-11-17 09:56</code>
               </td>
-              <td style="background-color: #c5f6fa">
+              <td style="background-color: #c3fae8">
                 <code
                   ><a
-                    style="color: #0b7285"
+                    style="color: #087f5b"
                     href="https://github.com/excalidraw/excalidraw/commit/96a5d65"
                     >96a5d65</a
                   ></code
                 >
               </td>
               <td style="background-color: #f1f3f5"></td>
-              <td style="background-color: #82c91e">62.9%</td>
-              <td style="background-color: #d8f5a2">23.4%</td>
+              <td style="background-color: #c0eb75">62.9%</td>
+              <td style="background-color: #e9fac8">23.4%</td>
+              <td style="background-color: #f1f3f5">-</td>
             </tr>
             <tr>
-              <td style="background-color: #f1f3f5" colspan="5"></td>
+              <td style="background-color: #f1f3f5" colspan="6"></td>
+            </tr>
+            <tr>
+              <td style="background-color: #c5f6fa; color: #0b7285">
+                <code>2022-11-15 20:02</code>
+              </td>
+              <td style="background-color: #c5f6fa">
+                <code
+                  ><a
+                    style="color: #0b7285"
+                    href="https://github.com/excalidraw/excalidraw/commit/bbe0c35"
+                    >bbe0c35</a
+                  ></code
+                >
+              </td>
+              <td style="background-color: #f1f3f5"></td>
+              <td style="background-color: #f1f3f5">-</td>
+              <td style="background-color: #f1f3f5">-</td>
+              <td style="background-color: #82c91e">100.0%</td>
+            </tr>
+            <tr>
+              <td style="background-color: #f1f3f5" colspan="6"></td>
             </tr>
             <tr>
               <td style="background-color: #d0ebff; color: #1864ab">
@@ -117,11 +140,12 @@
                 >
               </td>
               <td style="background-color: #f1f3f5"></td>
-              <td style="background-color: #c0eb75">37.1%</td>
-              <td style="background-color: #d8f5a2">25.5%</td>
+              <td style="background-color: #d8f5a2">37.1%</td>
+              <td style="background-color: #e9fac8">25.5%</td>
+              <td style="background-color: #f1f3f5">-</td>
             </tr>
             <tr>
-              <td style="background-color: #f1f3f5" colspan="5"></td>
+              <td style="background-color: #f1f3f5" colspan="6"></td>
             </tr>
             <tr>
               <td style="background-color: #dbe4ff; color: #364fc7">
@@ -138,10 +162,11 @@
               </td>
               <td style="background-color: #f1f3f5"></td>
               <td style="background-color: #f1f3f5">-</td>
-              <td style="background-color: #d8f5a2">27.7%</td>
+              <td style="background-color: #e9fac8">27.7%</td>
+              <td style="background-color: #f1f3f5">-</td>
             </tr>
             <tr>
-              <td style="background-color: #f1f3f5" colspan="5"></td>
+              <td style="background-color: #f1f3f5" colspan="6"></td>
             </tr>
             <tr>
               <td style="background-color: #e5dbff; color: #5f3dc4">
@@ -158,7 +183,8 @@
               </td>
               <td style="background-color: #f1f3f5"></td>
               <td style="background-color: #f1f3f5">-</td>
-              <td style="background-color: #d8f5a2">23.4%</td>
+              <td style="background-color: #e9fac8">23.4%</td>
+              <td style="background-color: #f1f3f5">-</td>
             </tr>
           </tbody>
         </table>
@@ -182,9 +208,10 @@
     <script>
       const drawVersionChart = () => {
         const data = google.visualization.arrayToDataTable([
-          ["Day", "8636ef1", "fdc462e", "640affe", "96a5d65"],
-          ["27 Dec", 0, 0, 0.3714, 0.6286],
-          ["28 Dec", 0.234, 0.2766, 0.2553, 0.234],
+          ["Day", "8636ef1", "fdc462e", "640affe", "bbe0c35", "96a5d65"],
+          ["27 Dec", 0, 0, 0.3714, 0, 0.6286],
+          ["28 Dec", 0.234, 0.2766, 0.2553, 0, 0.234],
+          ["02 Jan", 0, 0, 0, 1.0, 0],
         ]);
         const options = {
           chartArea: { width: "100%", height: "80%" },
