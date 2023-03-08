@@ -76,26 +76,48 @@
               <th>Commit</th>
               <th style="background-color: #f1f3f5"></th>
               <th style="background-color: #ffffff">Mon<br />06 Mar</th>
+              <th style="background-color: #ffffff">Wed<br />08 Mar</th>
             </tr>
           </thead>
           <tbody>
             <tr>
-              <td style="background-color: #f1f3f5" colspan="4"></td>
+              <td style="background-color: #f1f3f5" colspan="5"></td>
             </tr>
             <tr>
-              <td style="background-color: #e5dbff; color: #5f3dc4">
+              <td style="background-color: #dbe4ff; color: #364fc7">
                 <code>2022-11-17 09:56</code>
               </td>
-              <td style="background-color: #e5dbff">
+              <td style="background-color: #dbe4ff">
                 <code
                   ><a
-                    style="color: #5f3dc4"
+                    style="color: #364fc7"
                     href="https://github.com/excalidraw/excalidraw/commit/96a5d65"
                     >96a5d65</a
                   ></code
                 >
               </td>
               <td style="background-color: #f1f3f5"></td>
+              <td style="background-color: #82c91e">100.0%</td>
+              <td style="background-color: #f1f3f5">-</td>
+            </tr>
+            <tr>
+              <td style="background-color: #f1f3f5" colspan="5"></td>
+            </tr>
+            <tr>
+              <td style="background-color: #e5dbff; color: #5f3dc4">
+                <code>2022-10-10 14:08</code>
+              </td>
+              <td style="background-color: #e5dbff">
+                <code
+                  ><a
+                    style="color: #5f3dc4"
+                    href="https://github.com/excalidraw/excalidraw/commit/fdc462e"
+                    >fdc462e</a
+                  ></code
+                >
+              </td>
+              <td style="background-color: #f1f3f5"></td>
+              <td style="background-color: #f1f3f5">-</td>
               <td style="background-color: #82c91e">100.0%</td>
             </tr>
           </tbody>
@@ -120,8 +142,9 @@
     <script>
       const drawVersionChart = () => {
         const data = google.visualization.arrayToDataTable([
-          ["Day", "96a5d65"],
-          ["06 Mar", 1.0],
+          ["Day", "fdc462e", "96a5d65"],
+          ["06 Mar", 0, 1.0],
+          ["08 Mar", 1.0, 0],
         ]);
         const options = {
           chartArea: { width: "100%", height: "80%" },
