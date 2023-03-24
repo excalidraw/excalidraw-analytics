@@ -75,30 +75,9 @@
               <th>Version</th>
               <th>Commit</th>
               <th style="background-color: #f1f3f5"></th>
-              <th style="background-color: #ffffff">Fri<br />17 Mar</th>
             </tr>
           </thead>
-          <tbody>
-            <tr>
-              <td style="background-color: #f1f3f5" colspan="4"></td>
-            </tr>
-            <tr>
-              <td style="background-color: #e5dbff; color: #5f3dc4">
-                <code>2022-11-02 13:52</code>
-              </td>
-              <td style="background-color: #e5dbff">
-                <code
-                  ><a
-                    style="color: #5f3dc4"
-                    href="https://github.com/excalidraw/excalidraw/commit/8d5d68e"
-                    >8d5d68e</a
-                  ></code
-                >
-              </td>
-              <td style="background-color: #f1f3f5"></td>
-              <td style="background-color: #82c91e">100.0%</td>
-            </tr>
-          </tbody>
+          <tbody></tbody>
         </table>
       </div>
       <footer>
@@ -119,10 +98,7 @@
     <script type="text/javascript" src="/static/open-color.js"></script>
     <script>
       const drawVersionChart = () => {
-        const data = google.visualization.arrayToDataTable([
-          ["Day", "8d5d68e"],
-          ["17 Mar", 1.0],
-        ]);
+        const data = google.visualization.arrayToDataTable([["Day"]]);
         const options = {
           chartArea: { width: "100%", height: "80%" },
           isStacked: "relative",
